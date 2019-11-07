@@ -1,0 +1,56 @@
+{
+  "sword": {
+    "name":        "Sword",
+    "icon":        "swordico",
+    "examine":     "A trusty short blade, ready for action at a moment's notice.",
+    "slot":        "weapon",
+    "isEquipable": true,
+    "weight":      10,
+    "damage":      [1, 6]
+  },
+    "dagger": {
+    "name":        "Dagger",
+    "icon":        "swordico",
+    "examine":     "Small, pointy, deadly; best served with a coating of your favorite toxin.",
+    "slot":        "weapon",
+    "isEquipable": true,
+    "weight":      5,
+    "damage":      [1, 4]
+  },
+  "shield": {
+    "name":        "Shield",
+    "icon":        "shieldico",
+    "examine":     "There are few things better in life than a solid slab of oak and leather between you and a deadly edge.",
+    "slot":        "armor",
+    "isEquipable": true,
+    "weight":      25,
+    "damage":      null
+  },
+  "gold": {
+    "name":        "Gold Coin",
+    "icon":        "shieldico",
+    "examine":     "Stamped with the King's seal and worth more than your life to the common bandit.",
+    "slot":        "currency",
+    "isEquipable": false,
+    "weight":      0.1,
+    "damage":      null
+  },
+  "fist": {
+    "name":        "Fist",
+    "icon":        "swordico",
+    "examine":     "You have two of these, one slightly more deadly than the other, and you're not afraid to remind anyone of that fact.",
+    "slot":        "weapon",
+    "isEquipable": true,
+    "weight":      0,
+    "damage":      [0, 2]
+  },
+  "whetstone": {
+    "name":        "Whetstone",
+    "icon":        "shieldico",
+    "examine":     "When everything seems dull, this coarse stone will put an edge back into your life.",
+    "slot":        "enhancement",
+    "isEquipable": false,
+    "weight":      2,
+    "damage":      null
+  }
+}

@@ -1,4 +1,5 @@
 const CARDINALS = ["N", "E", "S", "W"];
+// let playerSprite = document.getElementById("player");
 
 export default class Player {
   constructor(gameWidth, gameHeight, width, height, playerSprite) {
@@ -9,6 +10,7 @@ export default class Player {
       x: gameWidth / 2 - this.width / 2,
       y: gameHeight / 2 - this.height / 2
     };
+    this.oldPosition = Object.assign({}, this.position);
     this.stepSize = 25;
     this.facing = "N";
   }
@@ -61,11 +63,21 @@ export default class Player {
   draw(context) {
     context.fillStyle = "#000";
     // context.fillRect(this.position.x, this.position.y, this.width, this.height);
-    context.drawImage(this.icon, this.position.x, this.position.y);
+    context.drawImage(this.icon, this.oldPosition.x, this.oldPosition.y);
   }
 
   update(dT) {
-    if (!dT) return;
-    this.position.x += 1 / dT;
+    if (this.oldPosition.x >= this.position.x) {
+      this.oldPosition.x -= 20 / dT;
+    }
+    if (this.oldPosition.x <= this.position.x) {
+      this.oldPosition.x += 20 / dT;
+    }
+    if (this.oldPosition.y <= this.position.y) {
+      this.oldPosition.y += 20 / dT;
+    }
+    if (this.oldPosition.y >= this.position.y) {
+      this.oldPosition.y -= 20 / dT;
+    }
   }
 }

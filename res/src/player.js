@@ -63,21 +63,22 @@ export default class Player {
   draw(context) {
     context.fillStyle = "#000";
     // context.fillRect(this.position.x, this.position.y, this.width, this.height);
-    context.drawImage(this.icon, this.oldPosition.x, this.oldPosition.y);
+    // context.drawImage(this.icon, this.oldPosition.x, this.oldPosition.y);
+    context.drawImage(this.icon, this.position.x, this.position.y);
   }
 
-  update(dT) {
-    if (this.oldPosition.x >= this.position.x) {
-      this.oldPosition.x -= 20 / dT;
-    }
-    if (this.oldPosition.x <= this.position.x) {
-      this.oldPosition.x += 20 / dT;
-    }
-    if (this.oldPosition.y <= this.position.y) {
-      this.oldPosition.y += 20 / dT;
-    }
-    if (this.oldPosition.y >= this.position.y) {
-      this.oldPosition.y -= 20 / dT;
-    }
-  }
+  // update(dT) {
+  //   if (this.oldPosition.x >= this.position.x) {
+  //     this.oldPosition.x -= 20 / dT;
+  //   }
+  //   if (this.oldPosition.x <= this.position.x) {
+  //     this.oldPosition.x += 20 / dT;
+  //   }
+  //   if (this.oldPosition.y <= this.position.y) {
+  //     this.oldPosition.y += 20 / dT;
+  //   }
+  //   if (this.oldPosition.y >= this.position.y) {
+  //     this.oldPosition.y -= 20 / dT;
+  //   }
+  // }
 }

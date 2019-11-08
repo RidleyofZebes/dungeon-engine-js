@@ -17,7 +17,7 @@ let player = new Player(GAME_WIDTH, GAME_HEIGHT, tileWidth, tileHeight, playerSp
 let map = new Map(100, 100);
 map.generate();
 
-new InputHandler(player);
+new InputHandler(player, map);
 
 let lastTime = 0;
 
@@ -26,7 +26,7 @@ function main(timestamp) {
   lastTime = timestamp;
   context.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
   map.drawMap(context);
-  player.update(dT);
+  // player.update(dT);
   player.draw(context);
 
   requestAnimationFrame(main);

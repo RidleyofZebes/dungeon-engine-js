@@ -1,14 +1,19 @@
 const CARDINALS = ["N", "E", "S", "W"];
-// let playerSprite = document.getElementById("player");
 
 export default class Player {
-  constructor(gameWidth, gameHeight, width, height, playerSprite) {
+  constructor(map, width, height, sprites) {
     this.width = width;
     this.height = height;
-    this.icon = playerSprite;
+    this.sprites = {
+      n: sprites.player_n,
+      e: sprites.player_e,
+      s: sprites.player_s,
+      w: sprites.player_w
+    };
+    this.icon = this.sprites.n;
     this.position = {
-      x: gameWidth / 2 - this.width / 2,
-      y: gameHeight / 2 - this.height / 2
+      x: 15,
+      y: 15
     };
     this.oldPosition = Object.assign({}, this.position);
     this.stepSize = 25;
@@ -23,7 +28,10 @@ export default class Player {
     if (direction > 3) direction = 0;
     this.facing = CARDINALS[direction];
 
-    console.log(this.facing);
+    if (this.facing === "N") this.icon = this.sprites.n;
+    if (this.facing === "E") this.icon = this.sprites.e;
+    if (this.facing === "S") this.icon = this.sprites.s;
+    if (this.facing === "W") this.icon = this.sprites.w;
   }
 
   moveForward() {
@@ -64,7 +72,7 @@ export default class Player {
     context.fillStyle = "#000";
     // context.fillRect(this.position.x, this.position.y, this.width, this.height);
     // context.drawImage(this.icon, this.oldPosition.x, this.oldPosition.y);
-    context.drawImage(this.icon, this.position.x, this.position.y);
+    context.drawImage(this.icon, this.position.x * this.width, this.position.y * this.height);
   }
 
   // update(dT) {

@@ -4,13 +4,13 @@ export default class InputHandler {
       switch (e.keyCode) {
         case 87:
         case 38:
-          player.moveForward();
-          map.offsetCamera(player.facing);
+          // player.moveForward();
+          map.offsetCamera(player.facing, "forward");
           break;
         case 83:
         case 40:
-          player.moveBackward();
-          map.offsetCamera(player.facing);
+          // player.moveBackward();
+          map.offsetCamera(player.facing, "back");
           break;
         case 65:
         case 37:

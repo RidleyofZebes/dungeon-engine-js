@@ -66,10 +66,18 @@ export default class Map {
       for (let j = 0; j < this.squares[i].length; j++) {
         switch (this.squares[i][j]) {
           case 0:
-            context.drawImage(this.sprites.stone_floor, this.tileSize * i + this.offset.x, this.tileSize * j + this.offset.y);
+            context.drawImage(
+              this.sprites.stone_floor,
+              this.tileSize * i + this.offset.x,
+              this.tileSize * j + this.offset.y
+            );
             break;
           case 1:
-            context.drawImage(this.sprites.stone_wall, this.tileSize * i + this.offset.x, this.tileSize * j + this.offset.y);
+            context.drawImage(
+              this.sprites.stone_wall,
+              this.tileSize * i + this.offset.x,
+              this.tileSize * j + this.offset.y
+            );
             break;
         }
       }

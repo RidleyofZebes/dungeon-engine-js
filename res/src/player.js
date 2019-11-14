@@ -1,7 +1,7 @@
 const CARDINALS = ["N", "E", "S", "W"];
 
 export default class Player {
-  constructor(map, width, height, sprites) {
+  constructor(width, height, sprites) {
     this.width = width;
     this.height = height;
     this.sprites = {
@@ -34,45 +34,49 @@ export default class Player {
     if (this.facing === "W") this.icon = this.sprites.w;
   }
 
-  moveForward() {
-    switch (this.facing) {
-      case "N":
-        this.position.y -= this.stepSize;
-        break;
-      case "E":
-        this.position.x += this.stepSize;
-        break;
-      case "S":
-        this.position.y += this.stepSize;
-        break;
-      case "W":
-        this.position.x -= this.stepSize;
-        break;
-    }
-  }
+  // moveForward() {
+  //   switch (this.facing) {
+  //     case "N":
+  //       this.position.y -= this.stepSize;
+  //       break;
+  //     case "E":
+  //       this.position.x += this.stepSize;
+  //       break;
+  //     case "S":
+  //       this.position.y += this.stepSize;
+  //       break;
+  //     case "W":
+  //       this.position.x -= this.stepSize;
+  //       break;
+  //   }
+  // }
 
-  moveBackward() {
-    switch (this.facing) {
-      case "N":
-        this.position.y += this.stepSize;
-        break;
-      case "E":
-        this.position.x -= this.stepSize;
-        break;
-      case "S":
-        this.position.y -= this.stepSize;
-        break;
-      case "W":
-        this.position.x += this.stepSize;
-        break;
-    }
-  }
+  // moveBackward() {
+  //   switch (this.facing) {
+  //     case "N":
+  //       this.position.y += this.stepSize;
+  //       break;
+  //     case "E":
+  //       this.position.x -= this.stepSize;
+  //       break;
+  //     case "S":
+  //       this.position.y -= this.stepSize;
+  //       break;
+  //     case "W":
+  //       this.position.x += this.stepSize;
+  //       break;
+  //   }
+  // }
 
   draw(context) {
     context.fillStyle = "#000";
     // context.fillRect(this.position.x, this.position.y, this.width, this.height);
     // context.drawImage(this.icon, this.oldPosition.x, this.oldPosition.y);
-    context.drawImage(this.icon, this.position.x * this.width, this.position.y * this.height);
+    context.drawImage(
+      this.icon,
+      this.position.x * this.width,
+      this.position.y * this.height
+    );
   }
 
   // update(dT) {

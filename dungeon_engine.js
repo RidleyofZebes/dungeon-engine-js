@@ -2,7 +2,7 @@ import Game from "./res/src/game.js";
 
 let canvas = document.getElementById("gameScreen");
 let context = canvas.getContext("2d");
-context.imageSmootingEnabled = false;
+context.imageSmoothingEnabled = false;
 context.scale(1, 1);
 
 const GAME_WIDTH = 1280;
@@ -10,9 +10,6 @@ const GAME_HEIGHT = 720;
 
 let game = new Game();
 game.start();
-
-let tileHeight = 25;
-let tileWidth = 25;
 
 let lastTime = 0;
 

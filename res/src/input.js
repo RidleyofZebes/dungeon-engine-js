@@ -30,6 +30,21 @@ export default class InputHandler {
         case 39:
           game.player.turn("right");
           break;
+        case 69:
+          // EXAMINE
+          break;
+        case 81:
+          // Q
+          break;
+        case 107:
+          game.camera.zoomIn();
+          break;
+        case 109:
+          game.camera.zoomOut();
+          break;
+        case 13:
+          game.camera.resetZoom();
+          break;
       }
     });
   }

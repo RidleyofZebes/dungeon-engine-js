@@ -4,10 +4,6 @@ export default class Map {
     this.cols = mapCols;
     this.sprites = game.sprites;
     this.squares = [];
-    this.offset = {
-      x: 0,
-      y: 0
-    };
   }
 
   generate() {
@@ -26,22 +22,37 @@ export default class Map {
   }
 
   drawMap(context, game) {
-    const CENTER = { x: 468, y: 218 };
     for (let i = 0; i < this.squares.length; i++) {
       for (let j = 0; j < this.squares[i].length; j++) {
         switch (this.squares[i][j]) {
           case 0:
             context.drawImage(
               this.sprites.stone_floor,
-              game.camera.tileSize * i + game.camera.offset.x + CENTER.x,
-              game.camera.tileSize * j + game.camera.offset.y + CENTER.y
+              game.camera.tileSize * i +
+                game.camera.offset.x +
+                game.camera.center.x -
+                game.camera.tileSize,
+              game.camera.tileSize * j +
+                game.camera.offset.y +
+                game.camera.center.y -
+                game.camera.tileSize,
+              game.camera.tileSize,
+              game.camera.tileSize
             );
             break;
           case 1:
             context.drawImage(
               this.sprites.stone_wall,
-              game.camera.tileSize * i + game.camera.offset.x + CENTER.x,
-              game.camera.tileSize * j + game.camera.offset.y + CENTER.y
+              game.camera.tileSize * i +
+                game.camera.offset.x +
+                game.camera.center.x -
+                game.camera.tileSize,
+              game.camera.tileSize * j +
+                game.camera.offset.y +
+                game.camera.center.y -
+                game.camera.tileSize,
+              game.camera.tileSize,
+              game.camera.tileSize
             );
             break;
         }

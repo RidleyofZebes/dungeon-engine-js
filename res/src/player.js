@@ -109,11 +109,16 @@ export default class Player {
   }
 
   draw(context, game) {
-    const CENTER = { x: 493, y: 243 };
-    context.fillStyle = "#000";
+    // context.fillStyle = "#000";
     // context.fillRect(this.position.x, this.position.y, this.width, this.height);
     // context.drawImage(this.icon, this.oldPosition.x, this.oldPosition.y);
-    context.drawImage(this.icon, CENTER.x, CENTER.y);
+    context.drawImage(
+      this.icon,
+      game.camera.center.x,
+      game.camera.center.y,
+      game.camera.tileSize,
+      game.camera.tileSize
+    );
   }
 
   // update(dT) {

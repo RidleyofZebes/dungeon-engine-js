@@ -4,6 +4,10 @@ export default class Camera {
       x: 0,
       y: 0
     };
+    this.center = {
+      x: 493,
+      y: 243
+    };
     this.tileSize = 25;
   }
 
@@ -40,5 +44,17 @@ export default class Camera {
         }
         break;
     }
+  }
+
+  zoomIn() {
+    this.tileSize = Math.min(this.tileSize * 1.2, 125);
+  }
+
+  zoomOut() {
+    this.tileSize = Math.max(this.tileSize * 0.8, 1);
+  }
+
+  resetZoom() {
+    this.tileSize = 25;
   }
 }

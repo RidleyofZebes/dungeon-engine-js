@@ -30,10 +30,7 @@ export function loadFonts(directory) {
     let nextfont = directory + fontsToLoad[i] + ".ttf";
 
     let loadedFont = new FontFace(fontsToLoad[i], "url(" + nextfont + ")");
-    // f.load().then(function() {});
-
     fontsLoaded[fontsToLoad[i]] = loadedFont;
   }
-
   return fontsLoaded;
 }

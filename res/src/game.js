@@ -8,8 +8,10 @@ import Camera from "./camera.js";
 export default class Game {
   constructor() {}
 
-  start() {
+  start(context) {
+    this.context = context;
     this.sprites = loadImages("../res/images/");
+    this.fonts = loadFonts("../res/fonts/");
     this.camera = new Camera(this);
     this.map = new Map(100, 100, this);
     this.map.generate();
@@ -34,5 +36,6 @@ export default class Game {
     this.screen.clearTextBox(ctx);
     this.screen.clearMenuBox(ctx);
     ctx.drawImage(this.sprites.border, 0, 0);
+    this.screen.message(this.player.journal[0], this.context, this.fonts);
   }
 }

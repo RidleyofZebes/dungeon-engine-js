@@ -77,4 +77,12 @@ export default class Screen {
       this.menuBox.height
     );
   }
+
+  message(message, ctx, fonts) {
+    fonts.Alkhemikal.load().then(function() {
+      ctx.font = "32px Alkhemikal";
+      ctx.fillStyle = "white";
+      ctx.fillText(message, 20, 545);
+    });
+  }
 }

@@ -46,15 +46,19 @@ export default class Camera {
     }
   }
 
-  zoomIn() {
+  zoomIn(game) {
     this.tileSize = Math.min(this.tileSize * 1.2, 125);
+    // this.offset.x = game.player.position.x * this.tileSize;
+    // this.offset.y = game.player.position.y * this.tileSize;
   }
 
-  zoomOut() {
+  zoomOut(game) {
     this.tileSize = Math.max(this.tileSize * 0.8, 1);
+    // this.offset.x = game.player.position.x * this.tileSize;
+    // this.offset.y = game.player.position.y * this.tileSize;
   }
 
-  resetZoom() {
+  resetZoom(game) {
     this.tileSize = 25;
   }
 }

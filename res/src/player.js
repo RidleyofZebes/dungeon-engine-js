@@ -18,6 +18,7 @@ export default class Player {
     this.oldPosition = Object.assign({}, this.position);
     this.stepSize = 1;
     this.facing = "N";
+    this.journal = ["Welcome to Dungeon Engine!"];
   }
 
   turn(turnDir) {
@@ -106,6 +107,10 @@ export default class Player {
     } else {
       return "floor";
     }
+  }
+
+  writeJournal(message) {
+    this.journal = [message, ...this.journal];
   }
 
   draw(context, game) {

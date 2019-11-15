@@ -8,8 +8,9 @@ export default class InputHandler {
             game.player.moveForward(game);
             game.camera.offsetCamera(game.player.facing, "forward");
           } else {
-            console.log("BLOCKED");
-            // TODO: Print blocking tile to message box.
+            game.player.writeJournal(
+              "You cannot go that way, there is an obstacle."
+            );
           }
           break;
         case 83:
@@ -18,8 +19,9 @@ export default class InputHandler {
             game.player.moveBackward(game);
             game.camera.offsetCamera(game.player.facing, "back");
           } else {
-            console.log("BLOCKED");
-            // TODO: Print blocking tile to message box.
+            game.player.writeJournal(
+              "You cannot go that way, there is an obstacle."
+            );
           }
           break;
         case 65:
@@ -31,19 +33,21 @@ export default class InputHandler {
           game.player.turn("right");
           break;
         case 69:
+          game.player.writeJournal("You examine the tile in front of you...");
           // EXAMINE
           break;
         case 81:
+          game.player.writeJournal("You pressed 'Q'.");
           // Q
           break;
         case 107:
-          game.camera.zoomIn();
+          game.camera.zoomIn(game);
           break;
         case 109:
-          game.camera.zoomOut();
+          game.camera.zoomOut(game);
           break;
         case 13:
-          game.camera.resetZoom();
+          game.camera.resetZoom(game);
           break;
       }
     });

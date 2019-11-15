@@ -1,9 +1,8 @@
 export default class Map {
-  constructor(mapRows, mapCols, sprites) {
+  constructor(mapRows, mapCols, game) {
     this.rows = mapRows;
     this.cols = mapCols;
-    this.sprites = sprites;
-    this.tileSize = 25;
+    this.sprites = game.sprites;
     this.squares = [];
     this.offset = {
       x: 0,
@@ -26,57 +25,23 @@ export default class Map {
     return this.squares;
   }
 
-  offsetCamera(facing, dir) {
-    const CARDINALS = ["N", "E", "S", "W"];
-    let offsetDirection = CARDINALS.indexOf(facing);
-    switch (offsetDirection) {
-      case 0:
-        if (dir === "forward") {
-          this.offset.y += this.tileSize;
-        } else if (dir === "back") {
-          this.offset.y -= this.tileSize;
-        }
-        break;
-      case 1:
-        if (dir === "forward") {
-          this.offset.x -= this.tileSize;
-        } else if (dir === "back") {
-          this.offset.x += this.tileSize;
-        }
-        break;
-      case 2:
-        if (dir === "forward") {
-          this.offset.y -= this.tileSize;
-        } else if (dir === "back") {
-          this.offset.y += this.tileSize;
-        }
-        break;
-      case 3:
-        if (dir === "forward") {
-          this.offset.x += this.tileSize;
-        } else if (dir === "back") {
-          this.offset.x -= this.tileSize;
-        }
-        break;
-    }
-  }
-
-  drawMap(context) {
+  drawMap(context, game) {
+    const CENTER = { x: 468, y: 218 };
     for (let i = 0; i < this.squares.length; i++) {
       for (let j = 0; j < this.squares[i].length; j++) {
         switch (this.squares[i][j]) {
           case 0:
             context.drawImage(
               this.sprites.stone_floor,
-              this.tileSize * i + this.offset.x,
-              this.tileSize * j + this.offset.y
+              game.camera.tileSize * i + game.camera.offset.x + CENTER.x,
+              game.camera.tileSize * j + game.camera.offset.y + CENTER.y
             );
             break;
           case 1:
             context.drawImage(
               this.sprites.stone_wall,
-              this.tileSize * i + this.offset.x,
-              this.tileSize * j + this.offset.y
+              game.camera.tileSize * i + game.camera.offset.x + CENTER.x,
+              game.camera.tileSize * j + game.camera.offset.y + CENTER.y
             );
             break;
         }

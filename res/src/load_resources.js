@@ -1,4 +1,4 @@
-export default function loadImages(directory) {
+export function loadImages(directory) {
   let imagesToLoad = [
     "border",
     "player_e",
@@ -20,4 +20,20 @@ export default function loadImages(directory) {
   }
 
   return imagesLoaded;
+}
+
+export function loadFonts(directory) {
+  let fontsToLoad = ["Alkhemikal", "Poco"];
+  let fontsLoaded = [];
+
+  for (let i = 0; i < fontsToLoad.length; i++) {
+    let nextfont = directory + fontsToLoad[i] + ".ttf";
+
+    let loadedFont = new FontFace(fontsToLoad[i], "url(" + nextfont + ")");
+    // f.load().then(function() {});
+
+    fontsLoaded[fontsToLoad[i]] = loadedFont;
+  }
+
+  return fontsLoaded;
 }

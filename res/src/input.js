@@ -4,13 +4,23 @@ export default class InputHandler {
       switch (e.keyCode) {
         case 87:
         case 38:
-          game.player.moveForward();
-          game.camera.offsetCamera(game.player.facing, "forward");
+          if (game.player.checkCollision(game, "forward") != "wall") {
+            game.player.moveForward(game);
+            game.camera.offsetCamera(game.player.facing, "forward");
+          } else {
+            console.log("BLOCKED");
+            // TODO: Print blocking tile to message box.
+          }
           break;
         case 83:
         case 40:
-          game.player.moveBackward();
-          game.camera.offsetCamera(game.player.facing, "back");
+          if (game.player.checkCollision(game, "back") != "wall") {
+            game.player.moveBackward(game);
+            game.camera.offsetCamera(game.player.facing, "back");
+          } else {
+            console.log("BLOCKED");
+            // TODO: Print blocking tile to message box.
+          }
           break;
         case 65:
         case 37:

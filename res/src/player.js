@@ -34,7 +34,7 @@ export default class Player {
     if (this.facing === "W") this.icon = this.sprites.w;
   }
 
-  moveForward() {
+  moveForward(game) {
     switch (this.facing) {
       case "N":
         this.position.y -= this.stepSize;
@@ -65,6 +65,46 @@ export default class Player {
       case "W":
         this.position.x += this.stepSize;
         break;
+    }
+  }
+
+  checkCollision(game, direction) {
+    let nextSQ = null;
+    if (direction === "forward") {
+      switch (this.facing) {
+        case "N":
+          nextSQ = game.map.squares[this.position.x][this.position.y - 1];
+          break;
+        case "E":
+          nextSQ = game.map.squares[this.position.x + 1][this.position.y];
+          break;
+        case "S":
+          nextSQ = game.map.squares[this.position.x][this.position.y + 1];
+          break;
+        case "W":
+          nextSQ = game.map.squares[this.position.x - 1][this.position.y];
+          break;
+      }
+    } else if (direction === "back") {
+      switch (this.facing) {
+        case "N":
+          nextSQ = game.map.squares[this.position.x][this.position.y + 1];
+          break;
+        case "E":
+          nextSQ = game.map.squares[this.position.x - 1][this.position.y];
+          break;
+        case "S":
+          nextSQ = game.map.squares[this.position.x][this.position.y - 1];
+          break;
+        case "W":
+          nextSQ = game.map.squares[this.position.x + 1][this.position.y];
+          break;
+      }
+    }
+    if (nextSQ === 1) {
+      return "wall";
+    } else {
+      return "floor";
     }
   }
 

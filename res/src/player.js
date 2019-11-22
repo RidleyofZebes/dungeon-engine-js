@@ -119,8 +119,8 @@ export default class Player {
     // context.drawImage(this.icon, this.oldPosition.x, this.oldPosition.y);
     context.drawImage(
       this.icon,
-      game.camera.center.x,
-      game.camera.center.y,
+      this.position.x * game.camera.tileSize + game.camera.offset.x,
+      this.position.y * game.camera.tileSize + game.camera.offset.y,
       game.camera.tileSize,
       game.camera.tileSize
     );

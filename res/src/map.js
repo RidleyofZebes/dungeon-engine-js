@@ -28,14 +28,8 @@ export default class Map {
           case 0:
             context.drawImage(
               this.sprites.stone_floor,
-              game.camera.tileSize * i +
-                game.camera.offset.x +
-                game.camera.center.x -
-                game.camera.tileSize,
-              game.camera.tileSize * j +
-                game.camera.offset.y +
-                game.camera.center.y -
-                game.camera.tileSize,
+              game.camera.tileSize * i + game.camera.offset.x,
+              game.camera.tileSize * j + game.camera.offset.y,
               game.camera.tileSize,
               game.camera.tileSize
             );
@@ -43,14 +37,8 @@ export default class Map {
           case 1:
             context.drawImage(
               this.sprites.stone_wall,
-              game.camera.tileSize * i +
-                game.camera.offset.x +
-                game.camera.center.x -
-                game.camera.tileSize,
-              game.camera.tileSize * j +
-                game.camera.offset.y +
-                game.camera.center.y -
-                game.camera.tileSize,
+              game.camera.tileSize * i + game.camera.offset.x,
+              game.camera.tileSize * j + game.camera.offset.y,
               game.camera.tileSize,
               game.camera.tileSize
             );

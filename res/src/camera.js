@@ -1,14 +1,14 @@
 export default class Camera {
   constructor() {
-    this.offset = {
-      x: 0,
-      y: 0
-    };
+    this.tileSize = 25;
     this.center = {
       x: 493,
       y: 243
     };
-    this.tileSize = 25;
+    this.offset = {
+      x: this.center.x - 1 * this.tileSize,
+      y: this.center.y - 1 * this.tileSize
+    };
   }
 
   offsetCamera(facing, dir) {
@@ -48,17 +48,19 @@ export default class Camera {
 
   zoomIn(game) {
     this.tileSize = Math.min(this.tileSize * 1.2, 125);
-    // this.offset.x = game.player.position.x * this.tileSize;
-    // this.offset.y = game.player.position.y * this.tileSize;
+    this.offset.x = this.center.x - game.player.position.x * this.tileSize;
+    this.offset.y = this.center.y - game.player.position.y * this.tileSize;
   }
 
   zoomOut(game) {
     this.tileSize = Math.max(this.tileSize * 0.8, 1);
-    // this.offset.x = game.player.position.x * this.tileSize;
-    // this.offset.y = game.player.position.y * this.tileSize;
+    this.offset.x = this.center.x - game.player.position.x * this.tileSize;
+    this.offset.y = this.center.y - game.player.position.y * this.tileSize;
   }
 
   resetZoom(game) {
     this.tileSize = 25;
+    this.offset.x = this.center.x - game.player.position.x * this.tileSize;
+    this.offset.y = this.center.y - game.player.position.y * this.tileSize;
   }
 }

@@ -11,10 +11,10 @@ export function loadImages(directory) {
   let imagesLoaded = [];
 
   for (let i = 0; i < imagesToLoad.length; i++) {
-    let nextimage = directory + imagesToLoad[i] + ".png";
+    let nextImage = directory + imagesToLoad[i] + ".png";
 
     let loadedImage = new Image();
-    loadedImage.src = nextimage;
+    loadedImage.src = nextImage;
 
     imagesLoaded[imagesToLoad[i]] = loadedImage;
   }
@@ -33,4 +33,36 @@ export function loadFonts(directory) {
     fontsLoaded[fontsToLoad[i]] = loadedFont;
   }
   return fontsLoaded;
+}
+
+export async function loadJson(directory) {
+  // export function loadJson(directory) {
+  let jsonToLoad = ["containers", "items", "monsters", "tiles"];
+  let jsonsLoaded = [];
+
+  for (let i = 0; i < jsonToLoad.length; i++) {
+    let nextJson = directory + jsonToLoad[i] + ".json";
+
+    let data = await fetch(nextJson);
+    let json = await data.json();
+    jsonsLoaded[jsonToLoad[i]] = json;
+  }
+
+  //   let loadedJson = new XMLHttpRequest();
+  //   loadedJson.open("GET", nextJson);
+  //   // loadedJson.responseType = "text";
+
+  //   loadedJson.onload = function() {
+  //     if (loadedJson.readyState === loadedJson.DONE) {
+  //       // if (this.status >= 200 && this.status < 400) {
+  //       if (loadedJson.status === 200) {
+  //         jsonsLoaded[jsonToLoad[i]] = JSON.parse(loadedJson.responseText);
+  //       }
+  //     }
+  //   };
+  //   loadedJson.send();
+  // }
+
+  // console.log(jsonsLoaded.items.sword);
+  return jsonsLoaded;
 }

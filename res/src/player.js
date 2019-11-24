@@ -36,36 +36,52 @@ export default class Player {
   }
 
   moveForward(game) {
-    switch (this.facing) {
-      case "N":
-        this.position.y -= this.stepSize;
-        break;
-      case "E":
-        this.position.x += this.stepSize;
-        break;
-      case "S":
-        this.position.y += this.stepSize;
-        break;
-      case "W":
-        this.position.x -= this.stepSize;
-        break;
+    let collisionCheck = this.checkCollision(game, "forward");
+    if (!collisionCheck[1]) {
+      switch (this.facing) {
+        case "N":
+          this.position.y -= this.stepSize;
+          break;
+        case "E":
+          this.position.x += this.stepSize;
+          break;
+        case "S":
+          this.position.y += this.stepSize;
+          break;
+        case "W":
+          this.position.x -= this.stepSize;
+          break;
+      }
+      game.camera.offsetCamera(this.facing, "forward");
+    } else {
+      let obstacle = collisionCheck[0];
+      obstacle = game.player.writeJournal(`You are blocked by a ${obstacle}.`);
     }
   }
 
-  moveBackward() {
-    switch (this.facing) {
-      case "N":
-        this.position.y += this.stepSize;
-        break;
-      case "E":
-        this.position.x -= this.stepSize;
-        break;
-      case "S":
-        this.position.y -= this.stepSize;
-        break;
-      case "W":
-        this.position.x += this.stepSize;
-        break;
+  moveBackward(game) {
+    let collisionCheck = this.checkCollision(game, "back");
+    if (!collisionCheck[1]) {
+      switch (this.facing) {
+        case "N":
+          this.position.y += this.stepSize;
+          break;
+        case "E":
+          this.position.x -= this.stepSize;
+          break;
+        case "S":
+          this.position.y -= this.stepSize;
+          break;
+        case "W":
+          this.position.x += this.stepSize;
+          break;
+      }
+      game.camera.offsetCamera(this.facing, "back");
+    } else {
+      let obstacle = collisionCheck[0];
+      game.player.writeJournal(
+        `You cannot go that way, there is a ${obstacle} in the way.`
+      );
     }
   }
 
@@ -102,10 +118,10 @@ export default class Player {
           break;
       }
     }
-    if (nextSQ === 1) {
-      return "wall";
+    if (game.data.tiles[nextSQ].isWall >= 1) {
+      return [game.data.tiles[nextSQ].name, true];
     } else {
-      return "floor";
+      return false;
     }
   }
 

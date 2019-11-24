@@ -1,32 +1,40 @@
 {
   "0": {
     "name": "Fathomless Void",
+    "icon": null,
     "examine": "You gaze into the Fathomless Void... and the Void gazes back!",
     "color": [0, 0, 0],
     "isWall": 2
   },
   "1": {
     "name": "Stone Floor",
+    "icon": "stone_floor",
     "examine": "The plain, stone floor is made of rough-hewn rock, worn smooth by the passage of time and countless footsteps.",
     "color": [169, 169, 169],
     "isWall": 0
   },
   "2": {
     "name": "Stone Wall",
+    "icon": "stone_wall",
     "examine": "The stone wall is bare save for a scattering of mosses and lichen in the occasional crack.",
     "color": [32, 32, 32],
     "isWall": 1
   },
   "3": {
     "name": "Door",
+    "icon": {
+      "open": "door_open",
+      "closed": "door_closed"
+    },
     "examine": "The tall, oaken door stands before you, foreboding and impassive. What lies beyond, treasure or misfortune?",
     "color": [169, 169, 169],
     "isWall": 1
   },
   "4": {
-  "name": "Custom Block",
-  "examine": "Custom description! ?????",
-  "color": [78, 48, 132],
-  "isWall": 0
+    "name": "Custom Block",
+    "icon": null,
+    "examine": "Custom description! ?????",
+    "color": [78, 48, 132],
+    "isWall": 0
   }
 }

@@ -1,20 +1,25 @@
 import Player from "./player.js";
 import InputHandler from "./input.js";
 import Map from "./map.js";
-import { loadImages, loadFonts } from "./load_resources.js";
+import { loadImages, loadFonts, loadJson } from "./load_resources.js";
 import Screen from "./screen.js";
 import Camera from "./camera.js";
 
 export default class Game {
   constructor() {}
 
-  start(context) {
-    this.context = context;
+  async load() {
     this.sprites = loadImages("../res/images/");
     this.fonts = loadFonts("../res/fonts/");
+    this.data = await loadJson("../res/json/");
+  }
+
+  async start(context) {
+    await this.load();
+    this.context = context;
     this.camera = new Camera(this);
     this.map = new Map(100, 100, this);
-    this.map.generate();
+    this.map.generate(this);
     this.player = new Player(this);
     this.screen = new Screen(this);
 
@@ -27,7 +32,7 @@ export default class Game {
 
   update() {}
 
-  draw(ctx) {
+  async draw(ctx) {
     this.screen.drawBackdrop(ctx);
     this.screen.clearMap(ctx, this.map);
     this.map.drawMap(ctx, this);

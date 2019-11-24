@@ -4,25 +4,11 @@ export default class InputHandler {
       switch (e.keyCode) {
         case 87:
         case 38:
-          if (game.player.checkCollision(game, "forward") != "wall") {
-            game.player.moveForward(game);
-            game.camera.offsetCamera(game.player.facing, "forward");
-          } else {
-            game.player.writeJournal(
-              "You cannot go that way, there is an obstacle."
-            );
-          }
+          game.player.moveForward(game);
           break;
         case 83:
         case 40:
-          if (game.player.checkCollision(game, "back") != "wall") {
-            game.player.moveBackward(game);
-            game.camera.offsetCamera(game.player.facing, "back");
-          } else {
-            game.player.writeJournal(
-              "You cannot go that way, there is an obstacle."
-            );
-          }
+          game.player.moveBackward(game);
           break;
         case 65:
         case 37:
